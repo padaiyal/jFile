@@ -4,8 +4,8 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>maven-project-template</artifactId>
-  <version>2021.01.15</version>
+  <artifactId>filesystem</artifactId>
+  <version>2021.05.05</version>
 
   <parent>
     <groupId>org.padaiyal</groupId>
@@ -14,12 +14,76 @@
     <relativePath>jPopper</relativePath>
   </parent>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <!--
+              These files are excluded from code coverage because of a known timeout issue found in MAC OS.
+              https://bugs.openjdk.java.net/browse/JDK-7133447
+            -->
+            <exclude>**/FileSystemUtility*</exclude>
+            <exclude>**/WatchServiceRegisteringFileVisitor*</exclude>
+            <exclude>**/WatchServiceRegistrationInfo*</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <properties>
+    <dependency.jProperties.version>2021.01.13</dependency.jProperties.version>
+    <dependency.jI18n.version>2021.01.14</dependency.jI18n.version>
+    <dependency.commandline.version>2021.01.22</dependency.commandline.version>
+    <dependency.mockito.version>3.7.7</dependency.mockito.version>
+  </properties>
+
+  <dependencies>
+  <dependency>
+    <groupId>org.padaiyal.utilities</groupId>
+    <artifactId>properties</artifactId>
+    <version>${dependency.jProperties.version}</version>
+    <scope>system</scope>
+    <systemPath>${pom.basedir}/properties-${dependency.jProperties.version}.jar</systemPath>
+  </dependency>
+  <dependency>
+    <groupId>org.padaiyal.utilities</groupId>
+    <artifactId>i18n</artifactId>
+    <version>${dependency.jI18n.version}</version>
+    <scope>system</scope>
+    <systemPath>${pom.basedir}/i18n-${dependency.jI18n.version}.jar</systemPath>
+  </dependency>
+    <dependency>
+      <groupId>org.padaiyal.utilities</groupId>
+      <artifactId>commandline</artifactId>
+      <version>${dependency.commandline.version}</version>
+      <scope>system</scope>
+      <systemPath>${pom.basedir}/commandline-${dependency.commandline.version}.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>${dependency.mockito.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-inline</artifactId>
+      <version>${dependency.mockito.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
   <distributionManagement>
     <repository>
       <id>github</id>
-      <name>jMavenProjectTemplate MVN package deployment</name>
-      <url>https://maven.pkg.github.com/padaiyal/jMavenProjectTemplate</url>
+      <name>jFile MVN package deployment</name>
+      <url>https://maven.pkg.github.com/padaiyal/jFile</url>
     </repository>
   </distributionManagement>
+
+
 
 </project>
