@@ -106,11 +106,11 @@ class FileSystemUtilityTest {
         PropertyUtility.getProperty("FileSystemUtilityTest.action.perform.waittime.milliseconds")
     );
 
-    testBedPath = Paths.get(
-            PropertyUtility.getProperty("FileSystemUtilityTest.testDirectory"))
-            .resolve("FUT")
-            .toAbsolutePath();
-
+    testBedPath = Files.createTempDirectory(
+        PropertyUtility.getProperty("FileSystemUtilityTest.testDirectory")
+    )
+        .resolve("FUT")
+        .toAbsolutePath();
   }
 
   /**
