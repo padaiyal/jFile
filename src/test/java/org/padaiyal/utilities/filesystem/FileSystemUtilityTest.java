@@ -882,7 +882,7 @@ class FileSystemUtilityTest {
           // Current directory
           "fold1, .",
           // root directory
-          "../../../../../.., /",
+          "/, /",
           // Parent directory
           "../lol, .."
       }
