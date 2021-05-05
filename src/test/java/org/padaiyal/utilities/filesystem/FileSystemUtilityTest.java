@@ -881,8 +881,6 @@ class FileSystemUtilityTest {
           "fold4/sdsds/, fold4/",
           // Current directory
           "fold1, .",
-          // root directory
-          "/, /",
           // Parent directory
           "../lol, .."
       }
